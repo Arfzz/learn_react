@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import TextType from '@/components/TextType';
+import SplitText from "@/components/SplitText";
+import CurvedLoop from './components/CurvedLoop';
 import { ChevronDown, ChevronUp, Search, Menu, X, MapPin, Phone, Mail, Instagram, ShoppingBag, Star, Award, Clock, Users, Heart, ArrowRight, Globe, Sparkles } from 'lucide-react';
 
 const App = () => {
@@ -16,6 +18,9 @@ const App = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+const handleAnimationComplete = () => {
+  console.log('All letters have animated!');
+};
   // Translations
   const translations = {
     id: {
@@ -400,7 +405,20 @@ const App = () => {
             <IOSCard className="inline-block px-6 py-3 mb-8 !bg-white/20 !backdrop-blur-xl !border-white/30">
               <div className="flex items-center text-white">
                 <Award className="w-5 h-5 mr-3 text-green-400" />
-                <span className="font-semibold">Bersertifikat Halal MUI</span>
+               <SplitText
+  text="Bersertifikasi Halal MUI"
+  className="text-2xl font-semibold text-center"
+  delay={100}
+  duration={0.6}
+  ease="power3.out"
+  splitType="chars"
+  from={{ opacity: 0, y: 40 }}
+  to={{ opacity: 1, y: 0 }}
+  threshold={0.1}
+  rootMargin="-100px"
+  textAlign="center"
+  onLetterAnimationComplete={handleAnimationComplete}
+/>
               </div>
             </IOSCard>
 
@@ -458,6 +476,7 @@ const App = () => {
           <div className="text-center mb-16">
             <h2 className="text-5xl md:text-6xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent mb-6">
               {t.products.title}
+             
             </h2>
             <div className="w-32 h-2 bg-gradient-to-r from-blue-500 to-purple-500 mx-auto rounded-full"></div>
           </div>

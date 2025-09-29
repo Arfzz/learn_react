@@ -1,6 +1,5 @@
 import { useEffect } from 'react';
 import { motion, useAnimation, useMotionValue } from 'motion/react';
-
 import './CircularText.css';
 
 const getRotationTransition = (duration, from, loop = true) => ({
